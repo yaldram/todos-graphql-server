@@ -1,0 +1,17 @@
+type Comment {
+  id: ID!
+  body: String!
+}
+
+type Query {
+  comment(id: ID!): Comment!
+}
+
+input CommentInput {
+  todoId: ID!
+  body: String!
+}
+
+type Mutation {
+  postCommentOnTodo(input: CommentInput): Comment!
+}

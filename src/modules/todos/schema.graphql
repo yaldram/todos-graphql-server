@@ -1,0 +1,45 @@
+enum TaskStatus {
+  PENDING
+  IN_PROGRESS
+  DONE
+}
+
+type Todo {
+  id: String!
+  task: String!
+  description: String!
+  status: TaskStatus!
+  tags: [String]!
+  comments: [Comment]
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Query {
+  todos: [Todo]!
+}
+
+input TodoInput {
+  task: String!
+  description: String!
+  status: TaskStatus!
+  tags: [String]
+}
+
+input EditTodoInput {
+  id: ID!
+  task: String!
+  description: String!
+  status: TaskStatus!
+  tags: [String]
+}
+
+input DeleteTodoInput {
+  id: ID!
+}
+
+type Mutation {
+  addTodo(input: TodoInput): Todo!
+  editTodo(input: EditTodoInput): Todo!
+  deleteTodo(input: DeleteTodoInput): Todo!
+}

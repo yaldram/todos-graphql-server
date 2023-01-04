@@ -1,13 +1,17 @@
+import "graphql-import-node";
+
 import { createServer } from "http";
 import { createYoga } from "graphql-yoga";
+import { useGraphQLModules } from "@envelop/graphql-modules";
 
-import { schema } from "./schema";
 import { createContext } from "./context";
+import { application } from "./modules";
 
 function main() {
   const yoga = createYoga({
-    schema,
-    context: createContext(),
+    schema: application.schema,
+    context: createContext,
+    plugins: [useGraphQLModules(application)],
   });
 
   const server = createServer(yoga);
