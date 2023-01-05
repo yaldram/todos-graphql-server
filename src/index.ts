@@ -2,16 +2,12 @@ import "graphql-import-node";
 
 import { createServer } from "http";
 import { createYoga } from "graphql-yoga";
-import { useGraphQLModules } from "@envelop/graphql-modules";
 
-import { createContext } from "./context";
-import { application } from "./modules";
+import { schema } from "./pothos";
 
 function main() {
   const yoga = createYoga({
-    schema: application.schema,
-    context: createContext,
-    plugins: [useGraphQLModules(application)],
+    schema: schema,
   });
 
   const server = createServer(yoga);
