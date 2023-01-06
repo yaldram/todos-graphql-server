@@ -3,8 +3,11 @@ import "graphql-import-node";
 import { createServer } from "http";
 import { createYoga } from "graphql-yoga";
 
-import { schema } from "./pothos";
+import { schema } from "./pothos-prisma";
 
+/**
+ * Create different main functions
+ */
 function main() {
   const yoga = createYoga({
     schema: schema,
